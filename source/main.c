@@ -6,21 +6,11 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/08 16:47:06 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/08 19:40:33 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = -1;
-	while (s[++i])
-		;
-	return (i);
-}
+#include <minishell.h>
 
 char	**split_argv(int argc, char **argv)
 {
@@ -44,13 +34,22 @@ char	**split_argv(int argc, char **argv)
 	return (args);
 }
 
-int	main(int argc, char **argv, char **envp)
+void	check_cmd(t_cmd *node)
+{
+	char	*cmd;
+	
+	cmd = node->cmnds[0];
+	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
+		echo(node); //написать реализацию
+}
+
+int	main(int argc, char **argv)
 {
 	t_cmd	node;
 
 	node.cmnds = split_argv(argc, argv);
-
-	while (*node.cmnds)
-		printf("%s ", *node.cmnds++);
+	check_cmd(&node);
+	// while (*node.cmnds)
+	// 	printf("%s ", *node.cmnds++);
 	return (0);
 }
