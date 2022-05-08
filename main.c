@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/07 21:22:24 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:47:06 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ char	**split_argv(int argc, char **argv)
 	int		j;
 	int		len;
 
-	args = (char **)malloc(sizeof(char *) * argc);
-	args[argc] = NULL;
+	args = (char **)malloc(sizeof(char *) * (argc - 1));
+	args[argc - 1] = NULL;
 	i = -1;
-	while (++i < argc)
+		while (++i < (argc - 1))
 	{
-		len = ft_strlen(argv[i]);
+		len = ft_strlen(argv[i+1]);
 		args[i] = (char *)malloc(sizeof(char) * (len + 1));
 		args[i][len] = '\0';
 		j = -1;
 		while (++j < len)
-			args[i][j] = argv[i][j];
+			args[i][j] = argv[i+1][j];
 	}
 	return (args);
 }
@@ -49,6 +49,7 @@ int	main(int argc, char **argv, char **envp)
 	t_cmd	node;
 
 	node.cmnds = split_argv(argc, argv);
+
 	while (*node.cmnds)
 		printf("%s ", *node.cmnds++);
 	return (0);
