@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/09 21:43:04 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:00:58 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**split_argv(int argc, char **argv)
 }
 
 /*
-** ветвления по командам echo, ls etc
+** ветвления по командам echo, ls ...
 */
 void	check_cmd(t_cmd *node)
 {
