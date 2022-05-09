@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/08 19:39:56 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:39:34 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_cmd
 	int		fd[2];
 	int		fd_in;
 	int		fd_out;
+	int		num_args;
 	char	**cmnds;
 }				t_cmd;
 

@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/08 19:40:33 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:40:02 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ char	**split_argv(int argc, char **argv)
 	int		j;
 	int		len;
 
-	args = (char **)malloc(sizeof(char *) * (argc - 1));
-	args[argc - 1] = NULL;
+	args = (char **)malloc(sizeof(char *) * (argc));
+	args[argc] = NULL;
 	i = -1;
-		while (++i < (argc - 1))
+	while (++i < (argc - 1))
 	{
 		len = ft_strlen(argv[i+1]);
 		args[i] = (char *)malloc(sizeof(char) * (len + 1));
@@ -34,6 +34,9 @@ char	**split_argv(int argc, char **argv)
 	return (args);
 }
 
+/*
+** ветвления по командам echo, ls etc
+*/
 void	check_cmd(t_cmd *node)
 {
 	char	*cmd;
@@ -48,8 +51,11 @@ int	main(int argc, char **argv)
 	t_cmd	node;
 
 	node.cmnds = split_argv(argc, argv);
+	node.num_args = 0;
+	while (node.cmnds[node.num_args])
+		node.num_args++;
+	// for (int i=0;i<node.num_args; i++)
+	// 	write(1, node.cmnds[i], ft_strlen(node.cmnds[i]));
 	check_cmd(&node);
-	// while (*node.cmnds)
-	// 	printf("%s ", *node.cmnds++);
 	return (0);
 }
