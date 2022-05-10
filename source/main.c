@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/09 20:40:02 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:41:45 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ char	**split_argv(int argc, char **argv)
 	int		j;
 	int		len;
 
-	args = (char **)malloc(sizeof(char *) * (argc));
-	args[argc] = NULL;
+	args = (char **)malloc(sizeof(char *) * (argc - 1));
 	i = -1;
 	while (++i < (argc - 1))
 	{
@@ -34,16 +33,13 @@ char	**split_argv(int argc, char **argv)
 	return (args);
 }
 
-/*
-** ветвления по командам echo, ls etc
-*/
 void	check_cmd(t_cmd *node)
 {
 	char	*cmd;
 	
 	cmd = node->cmnds[0];
-	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
-		echo(node); //написать реализацию
+	if (ft_strncmp(node->cmnds[0], "echo", ft_strlen(cmd)) == 0)
+		echo(node);
 }
 
 int	main(int argc, char **argv)
@@ -51,10 +47,9 @@ int	main(int argc, char **argv)
 	t_cmd	node;
 
 	node.cmnds = split_argv(argc, argv);
-	node.num_args = 0;
-	while (node.cmnds[node.num_args])
-		node.num_args++;
-	// for (int i=0;i<node.num_args; i++)
+	node.num_args = argc - 1;
+	// распечать аргументы начиная с команды
+	// for (int i=0;i < node.num_args; i++)
 	// 	write(1, node.cmnds[i], ft_strlen(node.cmnds[i]));
 	check_cmd(&node);
 	return (0);
