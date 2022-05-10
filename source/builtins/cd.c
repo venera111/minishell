@@ -6,13 +6,17 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:42:54 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/10 14:47:16 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/10 21:15:17 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
+
+
 void	cd(t_cmd *node)
 {
-	write(1, *node->cmnds, 3);
+	if (node->num_args > 1)
+	
+	// write(1, line, len);
 }
