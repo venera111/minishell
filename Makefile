@@ -6,7 +6,7 @@
 #    By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/08 17:26:47 by qestefan          #+#    #+#              #
-#    Updated: 2022/05/08 18:15:32 by qestefan         ###   ########.fr        #
+#    Updated: 2022/05/10 14:51:04 by qestefan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CC = gcc
 HEADER = includes
 DIR = ./source/
 BUILT = ./source/builtins/
-SRCS = $(DIR)main.c
-BUILT_SRC = $(BUILT)echo.c
+SRCS = $(DIR)main.c $(DIR)clear.c
+BUILT_SRC = $(BUILT)echo.c $(BUILT)cd.c
 OBJS = $(SRCS:.c=.o)
 OBJB = $(BUILT_SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/10 14:41:45 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:54:25 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void	check_cmd(t_cmd *node)
 	char	*cmd;
 	
 	cmd = node->cmnds[0];
-	if (ft_strncmp(node->cmnds[0], "echo", ft_strlen(cmd)) == 0)
+	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
 		echo(node);
+	else if (ft_strncmp(cmd, "cd", ft_strlen(cmd)) == 0)
+		cd(node);
 }
 
 int	main(int argc, char **argv)
@@ -52,5 +54,6 @@ int	main(int argc, char **argv)
 	// for (int i=0;i < node.num_args; i++)
 	// 	write(1, node.cmnds[i], ft_strlen(node.cmnds[i]));
 	check_cmd(&node);
+	clear(&node);
 	return (0);
 }

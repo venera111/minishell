@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/10 14:50:49 by qestefan         ###   ########.fr       */
+/*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
+/*   Updated: 2022/05/10 14:54:38 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <minishell.h>
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <libft.h>
-
-typedef struct	s_cmd
+void	clear(t_cmd *node)
 {
-	int		fd[2];
-	int		fd_in;
-	int		fd_out;
-	int		num_args;
-	char	**cmnds;
-}				t_cmd;
+	int	i;
 
-/*
-** builtins
-*/
-int		echo(t_cmd *node);
-void	cd(t_cmd *node);
-
-/*
-** clear
-*/
-void	clear(t_cmd *node);
-
-#endif
+	i = -1;
+	while (++i < node->num_args)
+		free(node->cmnds[i]);
+	free(node->cmnds);
+}
