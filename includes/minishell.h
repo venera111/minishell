@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/10 14:50:49 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:38:18 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct	s_cmd
 ** builtins
 */
 int		echo(t_cmd *node);
-void	cd(t_cmd *node);
 
 /*
 ** clear

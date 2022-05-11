@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/10 19:57:34 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:38:35 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	check_cmd(t_cmd *node)
 	cmd = node->cmnds[0];
 	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
 		echo(node);
-	else if (ft_strncmp(cmd, "cd", ft_strlen(cmd)) == 0)
-		cd(node);
 }
 
 int	main(int argc, char **argv)
