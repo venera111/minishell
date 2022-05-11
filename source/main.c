@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/11 19:38:35 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:55:04 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int	main(int argc, char **argv)
 	// for (int i=0;i < node.num_args; i++)
 	// 	write(1, node.cmnds[i], ft_strlen(node.cmnds[i]));
 	check_cmd(&node);
-	clear(&node);
+	// clear(&node);
 	return (0);
 }
