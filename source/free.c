@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 10:26:22 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:37:53 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	clear(t_cmd *node)
+void	free_builtins(t_cmd *node)
 {
 	int	i;
 
@@ -69,4 +69,12 @@ void	delete_node(t_envp *node)
 	if (node->next)
 		node->next->prev = node->prev;
 	free(node);	
+}
+
+void	clear_all(t_shell *shell)
+{
+	free_arr(shell->env_arr, shell->env_count);
+	free_env(&shell->ev);
+	free(shell->tmp);
+	free_builtins(&shell->node);
 }

@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 11:22:12 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:38:34 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,28 @@ void	check_cmd(t_cmd *node)
 		echo(node);
 }
 
+static void	builtins(t_shell *shell, int argc, char **argv)
+{
+	shell->node.cmnds = split_argv(argc, argv);
+	shell->node.num_args = argc - 1;
+	check_cmd(&shell->node);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	t_cmd		node;
-	t_envp		*ev;
-	t_envp		*tmp;
 	t_shell		shell;
-	char		**env_arr;
 
 	(void)argc;
 	(void)argv;
-	env_arr = NULL;
+	shell.env_arr = NULL;
 	shell.env_count = count_len_arr(envp);
-	env_arr = make_env_arr(envp, shell.env_count);
-	ev = malloc(sizeof(t_envp *));
-	if (!ev)
+	shell.env_arr = make_env_arr(envp, shell.env_count);
+	shell.ev = malloc(sizeof(t_envp *));
+	if (!shell.ev)
 		ft_error(ERR_ALLOC);
-	tmp = ev;
-	make_list(&ev, envp, shell.env_count);
-	node.cmnds = split_argv(argc, argv);
-	node.num_args = argc - 1;
-	check_cmd(&node);
-	clear(&node);
-	free_arr(env_arr, shell.env_count);
-	free_env(&ev);
-	free(tmp);
+	shell.tmp = shell.ev;
+	make_list(&shell.ev, envp, shell.env_count);
+	builtins(&shell, argc, argv);
+	clear_all(&shell);
 	return (0);
 }
