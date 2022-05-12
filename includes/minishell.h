@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 16:11:14 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:07:59 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <string.h>
 # include <libft.h>
 # include <fcntl.h>
+# include <errno.h>
 
 /*
 ** warnings
@@ -59,6 +60,7 @@ typedef struct s_shell
 	char			**env_arr;
 	char			*tmp_cwd;
 	int				env_count;
+	char			*cwd;
 	t_envp			*ev;
 	t_envp			*tmp;
 	t_cmd			node;

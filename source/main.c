@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 19:58:26 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:31:56 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	main(int argc, char **argv, char **envp)
 	shell.ev = malloc(sizeof(t_envp *));
 	if (!shell.ev)
 		ft_error(ERR_ALLOC);
-	make_list(&shell.ev, envp, shell.env_count);
 	shell.tmp = shell.ev;
+	make_list(&shell.ev, envp, shell.env_count);
 	// t_envp *tmp = shell.ev;
 	// while (tmp)
 	// {
