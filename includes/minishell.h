@@ -6,24 +6,30 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 10:48:23 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:23:55 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdlib.h>
-# include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <libft.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdio.h>
+# include <libft.h>
 # include <fcntl.h>
 
+/*
+** warnings
+*/
 # define ERR_ALLOC	"failed to allocated memory"
 
+/*
+** pipes and command struct
+*/
 typedef struct	s_cmd
 {
 	int				fd[2];
@@ -33,6 +39,9 @@ typedef struct	s_cmd
 	char			**cmnds;
 }				t_cmd;
 
+/*
+** enviroments struct
+*/
 typedef struct	s_envp
 {
 	char			*key;
@@ -42,23 +51,26 @@ typedef struct	s_envp
 	struct s_envp	*prev;
 }				t_envp;
 
-typedef struct s_var_box
+/*
+** shell struct
+*/
+typedef struct s_shell
 {
 	int				env_count;
-}				t_var_box;
+}				t_shell;
 
 /*
 ** enviroments
 */
 void	make_list(t_envp **ev_list, char **env, int ev_len);
-char	**make_env_arr(char **src, int len_src);
 void	create_node(t_envp **ev_list, char *env);
+char	**make_env_arr(char **src, int len_src);
 void	push_back(t_envp **list, t_envp **new);
+int		count_len_arr(char **arr);
 t_envp	*get_last(t_envp *head);
+char	*get_kval(char *env);
 char	*get_val(char *env);
 char	*get_key(char *env);
-char	*get_kval(char *env);
-int		count_len_arr(char **arr);
 
 /*
 ** builtins
@@ -68,11 +80,14 @@ int		echo(t_cmd *node);
 /*
 ** clear
 */
-void	clear(t_cmd *node);
 void	free_arr(char **arr, int arr_len);
-void	free_env(t_envp **lst);
 void	delete_node(t_envp *node);
+void	free_env(t_envp **lst);
+void	clear(t_cmd *node);
 
+/*
+** error
+*/
 void	ft_error(char *s);
 
 #endif
