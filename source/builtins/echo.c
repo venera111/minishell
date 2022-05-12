@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 17:47:16 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/09 20:48:14 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:57:29 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	echo(t_cmd *node)
 
 	i = 1;
 	f = 0;
-	if (!node->cmnds[1])
+	if (node->num_args == 1)
 	{
-		write(1, "\n", 1); // fd_out
+		write(1, "\n", 1);
 		return (0);
 	}
 	else if (node->cmnds[1][0] == '-' && node->cmnds[1][1] == 'n' \
