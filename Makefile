@@ -6,7 +6,7 @@
 #    By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/08 17:26:47 by qestefan          #+#    #+#              #
-#    Updated: 2022/05/12 11:24:19 by qestefan         ###   ########.fr        #
+#    Updated: 2022/05/12 11:53:10 by qestefan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ clean:
 	rm -rf $(OBJS) $(OBJB) $(OBJP)
 
 fclean: clean
-	# make fclean -C $(LIB_DIR) я добавлю авто-компиляцию libft
+	make fclean -C $(LIB_DIR) я добавлю авто-компиляцию libft
 	rm -rf $(NAME_PROJECT)
 re: fclean all
 
