@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 11:38:34 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:52:33 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,15 @@ char	**split_argv(int argc, char **argv)
 	return (args);
 }
 
-void	check_cmd(t_cmd *node)
-{
-	char	*cmd;
-	
-	cmd = node->cmnds[0];
-	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
-		echo(node);
-}
-
 static void	builtins(t_shell *shell, int argc, char **argv)
 {
+	char	*cmd;
+
 	shell->node.cmnds = split_argv(argc, argv);
 	shell->node.num_args = argc - 1;
-	check_cmd(&shell->node);
+	cmd = shell->node.cmnds[0];
+	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
+		echo(&shell->node);
 }
 
 int	main(int argc, char **argv, char **envp)
