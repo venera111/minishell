@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 09:46:03 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 10:48:28 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,30 @@ void	check_cmd(t_cmd *node)
 		echo(node);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
-	t_cmd	node;
+	t_cmd		node;
+	t_envp		*ev;
+	t_envp		*tmp;
+	t_var_box	box;
+	char		**env_arr;
 
+	(void)argc;
+	(void)argv;
+	env_arr = NULL;
+	box.env_count = count_len_arr(envp);
+	env_arr = make_env_arr(envp, box.env_count);
+	ev = malloc(sizeof(t_envp *));
+	if (!ev)
+		ft_error(ERR_ALLOC);
+	tmp = ev;
+	make_list(&ev, envp, box.env_count);
 	node.cmnds = split_argv(argc, argv);
 	node.num_args = argc - 1;
-	// распечать аргументы начиная с команды
-	// for (int i=0;i < node.num_args; i++)
-	// 	write(1, node.cmnds[i], ft_strlen(node.cmnds[i]));
 	check_cmd(&node);
-	// clear(&node);
+	clear(&node);
+	free_arr(env_arr, box.env_count);
+	free_env(&ev);
+	free(tmp);
 	return (0);
 }
