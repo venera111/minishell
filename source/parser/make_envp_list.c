@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 12:40:02 by amoriah           #+#    #+#             */
-/*   Updated: 2022/05/12 10:48:35 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 19:52:24 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	create_node(t_envp **ev_list, char *env)
 	new = (t_envp *)malloc(sizeof(t_envp));
 	if (!new)
 		ft_error(ERR_ALLOC);
+		
 	new->kval = get_kval(env);
 	new->val = get_val(env);
 	new->key = get_key(env);

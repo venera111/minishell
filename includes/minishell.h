@@ -6,19 +6,19 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 11:37:01 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:11:14 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-# include <stdio.h>
 # include <libft.h>
 # include <fcntl.h>
 
@@ -57,10 +57,12 @@ typedef struct	s_envp
 typedef struct s_shell
 {
 	char			**env_arr;
+	char			*tmp_cwd;
 	int				env_count;
 	t_envp			*ev;
 	t_envp			*tmp;
 	t_cmd			node;
+	int				i;
 }				t_shell;
 
 /*
@@ -80,6 +82,7 @@ char	*get_key(char *env);
 ** builtins
 */
 int		echo(t_cmd *node);
+void	cd(t_shell *shell);
 
 /*
 ** clear

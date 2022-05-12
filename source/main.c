@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 11:52:33 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 19:58:26 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	builtins(t_shell *shell, int argc, char **argv)
 	cmd = shell->node.cmnds[0];
 	if (ft_strncmp(cmd, "echo", ft_strlen(cmd)) == 0)
 		echo(&shell->node);
+	else if (ft_strncmp(cmd, "cd", ft_strlen(cmd)) == 0)
+		cd(shell);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -56,8 +58,14 @@ int	main(int argc, char **argv, char **envp)
 	shell.ev = malloc(sizeof(t_envp *));
 	if (!shell.ev)
 		ft_error(ERR_ALLOC);
-	shell.tmp = shell.ev;
 	make_list(&shell.ev, envp, shell.env_count);
+	shell.tmp = shell.ev;
+	// t_envp *tmp = shell.ev;
+	// while (tmp)
+	// {
+	// 	printf("%s=%s\n%s\n", tmp->key, tmp->val, tmp->kval);
+	// 	tmp = tmp->next;
+	// }
 	builtins(&shell, argc, argv);
 	clear_all(&shell);
 	return (0);

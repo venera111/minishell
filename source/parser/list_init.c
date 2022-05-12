@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:41:32 by yono              #+#    #+#             */
-/*   Updated: 2022/05/12 10:48:04 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/12 19:52:10 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	count_len_arr(char **arr)
 	int	i;
 
 	i = 0;
-	while (*(arr + i))
+	while(*(arr + i))
 		i++;
 	return(i);
 }
