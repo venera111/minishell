@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 12:21:31 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:03:27 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	builtins(t_shell *shell, int argc, char **argv)
 		cd(shell);
 	else if (ft_strncmp(cmd, "pwd", ft_strlen(cmd)) == 0)
 		pwd(shell);
+	else if (ft_strncmp(cmd, "export", ft_strlen(cmd)) == 0)
+		export(shell);
 }
 
 int	main(int argc, char **argv, char **envp)

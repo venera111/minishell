@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 12:12:02 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:05:30 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char	*get_key(char *env);
 int		echo(t_cmd *node);
 void	cd(t_shell *shell);
 void	pwd(t_shell *shell);
+void	export(t_shell *shell);
 
 /*
 ** clear

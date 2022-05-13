@@ -6,7 +6,7 @@
 #    By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/08 17:26:47 by qestefan          #+#    #+#              #
-#    Updated: 2022/05/12 15:14:09 by qestefan         ###   ########.fr        #
+#    Updated: 2022/05/13 15:04:16 by qestefan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ endif
 
 #source
 SRCS = $(DIR)main.c $(DIR)free.c $(DIR)error.c
-BUILT_SRC = $(BUILT)echo.c $(BUILT)cd.c $(BUILT)cd_utils.c
+BUILT_SRC = $(BUILT)echo.c $(BUILT)cd.c $(BUILT)export.c
 PARS_SRC = $(PARS)list_init.c $(PARS)make_envp_list.c
 
 OBJS = $(SRCS:.c=.o)
