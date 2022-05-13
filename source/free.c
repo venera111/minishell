@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 20:26:29 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:30:24 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ void	free_env(t_envp *envp)
 {
 	t_envp	*tmp;
 
-	while (envp && envp->next)
+	while (envp)
 	{
-		tmp = envp;
-		envp = envp->next;
+		if (envp->next)
+		{
+			tmp = envp;
+			envp = envp->next;
+		}
 		ft_memdel(tmp->str);
 		ft_memdel(tmp->key);
 		ft_memdel(tmp->value);
 		ft_memdel(tmp);
 	}
-	ft_memdel(envp->str);
-	ft_memdel(envp->key);
-	ft_memdel(envp->value);
 	ft_memdel(envp);
 }
 
