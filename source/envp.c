@@ -6,11 +6,23 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 16:10:28 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 19:37:11 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:16:54 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+t_envp	*find_node(char *key, t_envp *envp)
+{
+	while (envp)
+	{
+		if (ft_strcmp(key, envp->key))
+			envp = envp->next;
+		else
+			break ;
+	}
+	return (envp);
+}
 
 static void	fill_envp(char *env, t_envp *node)
 {

@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 19:34:47 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:40:05 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,16 @@ int	main(int argc, char **argv, char **envp)
 	envp_init(&shell, envp);
 
 	//распечатать переменные окружения и сравнить с оригиналом
-	t_envp *tmp = shell.envp;
-	while (tmp)
-	{
-		if (!(ft_strcmp(*envp, ft_strjoin(tmp->key, ft_strjoin("=", tmp->value)))))
-			printf("%s\n",tmp->str);
-		else
-			printf("error\n");
-		tmp = tmp->next;
-		envp++;
-	}
+	// t_envp *tmp = shell.envp;
+	// while (tmp)
+	// {
+	// 	if (!(ft_strcmp(*envp, ft_strjoin(tmp->key, ft_strjoin("=", tmp->value)))))
+	// 		printf("%s\n",tmp->str);
+	// 	else
+	// 		printf("error\n");
+	// 	tmp = tmp->next;
+	// 	envp++;
+	// }
 	builtins(&shell, argc, argv);
 	clear_all(&shell);
 	return (0);
