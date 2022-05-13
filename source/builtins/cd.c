@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:09:35 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 12:11:35 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:18:41 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ void	cd_continue(t_shell *shell)
 	char	*path;
 	int		i;
 
-	tmp = shell->ev;
+	tmp = shell->envp;
 	i = -1;
 	while (++i < shell->env_count && ft_strcmp(tmp->key, "OLDPWD")) //напсиать функцию для получения ноды
 		tmp = tmp->next;
 	if (i != shell->env_count)
 	{
-		path = tmp->val;
+		path = tmp->value;
 		if (shell->tmp_cwd)
 		{
-			tmp->val = shell->tmp_cwd;
+			tmp->value = shell->tmp_cwd;
 			free(path);
 		}
 	}
 	getcwd(shell->arr, sizeof(shell->arr));
 	i = -1;
-	tmp = shell->ev;
+	tmp = shell->envp;
 	while (++i < shell->env_count && ft_strcmp(tmp->key, "PWD"))
 		tmp = tmp->next;
-	free(tmp->val);
-	tmp->val = ft_strdup(shell->arr);       //   "/Users/qestefan/Documents/minishell"   <- "/usr/local/bin"
+	free(tmp->value);
+	tmp->value = ft_strdup(shell->arr);       //   "/Users/qestefan/Documents/minishell"   <- "/usr/local/bin"
 }
 
 void	cd(t_shell *shell)
@@ -50,12 +50,12 @@ void	cd(t_shell *shell)
 	tmp = NULL;
 	if (shell->node.num_args == 1)
 	{
-		tmp = shell->ev;
+		tmp = shell->envp;
 		while (++i < shell->env_count && \
 		ft_strcmp(tmp->key, "HOME"))
 			tmp = tmp->next;
 		if (i != shell->env_count)
-			chdir(tmp->val);
+			chdir(tmp->value);
 		// free(shell->tmp_cwd); //убрать очистку
 	}
 	else if ((chdir("/usr/local/bin")) == -1) //парсинг готовый абсолютный/относительный(склеить с текущ или ../) путь

@@ -6,11 +6,39 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 15:03:27 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:32:26 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+int	count_len_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while(*(arr + i))
+		i++;
+	return(i);
+}
+
+char	**make_env_arr(char **src, int len_src)
+{
+	char	**res;
+	int		i;
+
+	i = 0;
+	res = ft_calloc((len_src + 1), sizeof(char *));
+	if (!res)
+		ft_error(ERR_ALLOC);
+	while (*(src + i))
+	{
+		res[i] = ft_strdup(src[i]);
+		i++;
+	}
+	i = 0;
+	return (res);
+}
 
 char	**split_argv(int argc, char **argv)
 {
@@ -58,18 +86,21 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	shell.env_arr = NULL;
 	shell.env_count = count_len_arr(envp);
-	shell.env_arr = make_env_arr(envp, shell.env_count);
-	shell.ev = malloc(sizeof(t_envp *));
-	if (!shell.ev)
+	shell.env_arr = make_env_arr(envp, shell.env_count); //не используется
+	shell.envp = malloc(sizeof(t_envp *));
+	if (!shell.envp)
 		ft_error(ERR_ALLOC);
-	shell.tmp = shell.ev;
-	make_list(&shell.ev, envp, shell.env_count);
-	t_envp *tmp = shell.ev;
-	while (tmp)
-	{
-		printf("%s=%s\n%s\n", tmp->key, tmp->val, tmp->kval);
-		tmp = tmp->next;
-	}
+	shell.tmp = shell.envp;
+	envp_init(&shell, envp);
+
+	// //распечатать переменные окружения
+	// t_envp *tmp = shell.envp;
+	// while (tmp)
+	// {
+	// 	printf("%s\n", tmp->str);
+	// 	tmp = tmp->next;
+	// }
+
 	builtins(&shell, argc, argv);
 	clear_all(&shell);
 	return (0);

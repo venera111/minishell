@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 15:05:30 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:31:16 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct	s_cmd
 typedef struct	s_envp
 {
 	char			*key;
-	char			*val;
-	char			*kval;
+	char			*value;
+	char			*str;
 	struct s_envp	*next;
 	struct s_envp	*prev;
 }				t_envp;
@@ -58,11 +58,11 @@ typedef struct	s_envp
 */
 typedef struct s_shell
 {
-	char			**env_arr;
+	char			**env_arr; //переменные окружения
 	char			*tmp_cwd;
 	int				env_count;
 	char			arr[MAXPATHLEN];
-	t_envp			*ev;
+	t_envp			*envp; //переменные окружения
 	t_envp			*tmp;
 	t_cmd			node;
 	int				i;
@@ -71,15 +71,9 @@ typedef struct s_shell
 /*
 ** enviroments
 */
-void	make_list(t_envp **ev_list, char **env, int ev_len);
-void	create_node(t_envp **ev_list, char *env);
+void	envp_init(t_shell *shell, char **envp);
 char	**make_env_arr(char **src, int len_src);
-void	push_back(t_envp **list, t_envp **new);
 int		count_len_arr(char **arr);
-t_envp	*get_last(t_envp *head);
-char	*get_kval(char *env);
-char	*get_val(char *env);
-char	*get_key(char *env);
 
 /*
 ** builtins

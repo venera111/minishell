@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 12:13:00 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:17:48 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	free_env(t_envp **lst)
 		while (*lst)
 		{
 			tmp = (*lst)->next;
-			free((*lst)->kval);
+			free((*lst)->str);
 			if ((*lst)->key)
 				free((*lst)->key);
-			if ((*lst)->val)
-				free((*lst)->val);
+			if ((*lst)->value)
+				free((*lst)->value);
 			free(*lst);
 			*lst = tmp;
 		}
@@ -59,11 +59,11 @@ void	free_env(t_envp **lst)
 
 void	delete_node(t_envp *node)
 {
-	free(node->kval);
+	free(node->str);
 	if (node->key)
 		free(node->key);
-	if (node->val)
-		free(node->val);
+	if (node->value)
+		free(node->value);
 	if (node->prev)
 		node->prev->next = node->next;
 	if (node->next)
@@ -74,7 +74,7 @@ void	delete_node(t_envp *node)
 void	clear_all(t_shell *shell)
 {
 	free_arr(shell->env_arr, shell->env_count);
-	free_env(&shell->ev);
+	free_env(&shell->envp);
 	free(shell->tmp);
 	free_builtins(&shell->node);
 }
