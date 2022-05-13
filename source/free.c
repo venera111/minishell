@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 16:38:05 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:49:45 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,25 @@ void free_arr(char **arr, int arr_len)
 	}
 }
 
-void	free_env(t_envp **lst)
+void	free_env(t_envp *envp)
 {
 	t_envp	*tmp;
 
-	if (lst)
+	while (envp && envp->next)
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			free((*lst)->str);
-			if ((*lst)->key)
-				free((*lst)->key);
-			if ((*lst)->value)
-				free((*lst)->value);
-			free(*lst);
-			*lst = tmp;
-		}
+		tmp = envp;
+		envp = envp->next;
+		ft_memdel(tmp->str);
+		ft_memdel(tmp);
 	}
+	ft_memdel(envp->str);
+	ft_memdel(envp);
 }
 
 void	clear_all(t_shell *shell)
 {
 	free_arr(shell->env_arr, shell->env_count);
-	free_env(&shell->envp);
+	free_env(shell->envp);
 	free(shell->tmp);
 	free_builtins(&shell->node);
 }

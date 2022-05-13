@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 16:31:16 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:45:17 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	export(t_shell *shell);
 */
 void	free_arr(char **arr, int arr_len);
 void	delete_node(t_envp *node);
-void	free_env(t_envp **lst);
+void	free_env(t_envp *envp);
 void	free_builtins(t_cmd *node);
 void	clear_all(t_shell *shell);
 
