@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:41:32 by yono              #+#    #+#             */
-/*   Updated: 2022/05/12 19:52:10 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:35:18 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,8 @@ char	*get_key(char *env)
 	len = 0;
 	while (env[len] != '=')
 		len++;
-	env[len] = '\0';
-	res = ft_calloc(len, sizeof(char));
-	if (!res)
-		ft_error(ERR_ALLOC);
-	while (++i < len)
-		res[i] =  env[i];
-	return (res);	
+	res = ft_substr(env, 0, len);
+	return (res);
 }
 
 char	*get_kval(char *env)
