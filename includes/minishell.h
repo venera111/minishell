@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 21:07:59 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:12:02 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <libft.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <sys/param.h>
 
 /*
 ** warnings
@@ -60,7 +61,7 @@ typedef struct s_shell
 	char			**env_arr;
 	char			*tmp_cwd;
 	int				env_count;
-	char			*cwd;
+	char			arr[MAXPATHLEN];
 	t_envp			*ev;
 	t_envp			*tmp;
 	t_cmd			node;
@@ -85,6 +86,7 @@ char	*get_key(char *env);
 */
 int		echo(t_cmd *node);
 void	cd(t_shell *shell);
+void	pwd(t_shell *shell);
 
 /*
 ** clear

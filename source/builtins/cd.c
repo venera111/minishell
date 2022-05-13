@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:09:35 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 21:41:06 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:11:35 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	cd_continue(t_shell *shell)
 			free(path);
 		}
 	}
-	getcwd(shell->cwd, sizeof("/usr/local/bin"));
+	getcwd(shell->arr, sizeof(shell->arr));
 	i = -1;
 	tmp = shell->ev;
 	while (++i < shell->env_count && ft_strcmp(tmp->key, "PWD"))
 		tmp = tmp->next;
 	free(tmp->val);
-	tmp->val = ft_strdup(shell->cwd);       //   "/Users/qestefan/Documents/minishell"   <- "/usr/local/bin"
+	tmp->val = ft_strdup(shell->arr);       //   "/Users/qestefan/Documents/minishell"   <- "/usr/local/bin"
 }
 
 void	cd(t_shell *shell)
@@ -67,4 +67,12 @@ void	cd(t_shell *shell)
 		// free(shell->tmp_cwd); //убрать очистку
 	}
 	cd_continue(shell);
+}
+
+void	pwd(t_shell *shell)
+{
+	printf("%s", shell->arr);
+	getcwd(shell->arr, sizeof(shell->arr));
+	write(1, shell->arr, ft_strlen(shell->arr));
+	write(1, "\n", 1);
 }

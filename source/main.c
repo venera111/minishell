@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/12 20:31:56 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:21:31 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	builtins(t_shell *shell, int argc, char **argv)
 		echo(&shell->node);
 	else if (ft_strncmp(cmd, "cd", ft_strlen(cmd)) == 0)
 		cd(shell);
+	else if (ft_strncmp(cmd, "pwd", ft_strlen(cmd)) == 0)
+		pwd(shell);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -60,12 +62,12 @@ int	main(int argc, char **argv, char **envp)
 		ft_error(ERR_ALLOC);
 	shell.tmp = shell.ev;
 	make_list(&shell.ev, envp, shell.env_count);
-	// t_envp *tmp = shell.ev;
-	// while (tmp)
-	// {
-	// 	printf("%s=%s\n%s\n", tmp->key, tmp->val, tmp->kval);
-	// 	tmp = tmp->next;
-	// }
+	t_envp *tmp = shell.ev;
+	while (tmp)
+	{
+		printf("%s=%s\n%s\n", tmp->key, tmp->val, tmp->kval);
+		tmp = tmp->next;
+	}
 	builtins(&shell, argc, argv);
 	clear_all(&shell);
 	return (0);
