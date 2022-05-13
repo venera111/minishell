@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 16:32:26 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:36:05 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char **argv, char **envp)
 	shell.tmp = shell.envp;
 	envp_init(&shell, envp);
 
-	// //распечатать переменные окружения
+	//распечатать переменные окружения
 	// t_envp *tmp = shell.envp;
 	// while (tmp)
 	// {

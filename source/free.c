@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 16:17:48 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:38:05 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,6 @@ void	free_env(t_envp **lst)
 			*lst = tmp;
 		}
 	}
-}
-
-void	delete_node(t_envp *node)
-{
-	free(node->str);
-	if (node->key)
-		free(node->key);
-	if (node->value)
-		free(node->value);
-	if (node->prev)
-		node->prev->next = node->next;
-	if (node->next)
-		node->next->prev = node->prev;
-	free(node);	
 }
 
 void	clear_all(t_shell *shell)
