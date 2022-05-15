@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:09:35 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 13:50:51 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:30:59 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	cd(t_shell *shell)
 	else if ((chdir(shell->node.cmnds[1])) == -1) //парсинг готовый абсолютный/относительный(склеить с текущ или ../) путь
 	{
 		printf("minishell: cd: %s: %s\n", \
-			shell->env_arr[1], strerror(errno));
+			shell->node.cmnds[1], strerror(errno));
 		free(tmp);
 		tmp = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 16:10:28 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 20:16:54 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:34:04 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ t_envp	*find_node(char *key, t_envp *envp)
 			break ;
 	}
 	return (envp);
+}
+
+static int	count_len_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (*(arr + i))
+		i++;
+	return (i);
 }
 
 static void	fill_envp(char *env, t_envp *node)
@@ -45,8 +55,9 @@ void	envp_init(t_shell *shell, char **envp)
 {
 	t_envp	*env;
 	t_envp	*new;
-	int		i;
 
+	shell->env_count = count_len_arr(envp);
+	shell->start = shell->envp;
 	env = malloc(sizeof(t_envp));
 	if (!env)
 		ft_error(ERR_ALLOC);
@@ -54,17 +65,17 @@ void	envp_init(t_shell *shell, char **envp)
 	env->next = NULL;
 	env->prev = NULL;
 	shell->envp = env;
-	i = 1;
-	while (envp && envp[0] && envp[i])
+	shell->i = 1;
+	while (envp && envp[0] && envp[shell->i])
 	{
 		new = malloc(sizeof(t_envp));
 		if (!new)
 			ft_error(ERR_ALLOC);
-		fill_envp(envp[i], new);
+		fill_envp(envp[shell->i], new);
 		new->prev = env;
 		new->next = NULL;
 		env->next = new;
 		env = new;
-		i++;
+		shell->i++;
 	}
 }

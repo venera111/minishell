@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 18:01:37 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:19:57 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,6 @@ void	free_builtins(t_cmd *node)
 	while (++i < node->num_args)
 		free(node->cmnds[i]);
 	free(node->cmnds);
-}
-
-void free_arr(char **arr, int arr_len)
-{
-	if (arr)
-	{		
-		while (arr_len >= 0)
-		{
-			if (arr[arr_len])
-				free(arr[arr_len]);
-			arr_len--;
-		}
-		free(arr);
-		arr = NULL;
-	}
 }
 
 void	free_env(t_envp *envp)
@@ -58,7 +43,6 @@ void	free_env(t_envp *envp)
 
 void	clear_all(t_shell *shell)
 {
-	free_arr(shell->env_arr, shell->env_count);
 	free_env(shell->envp);
 	free(shell->start);
 	free_builtins(&shell->node);

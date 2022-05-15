@@ -6,21 +6,11 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 18:12:19 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:33:37 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-int	count_len_arr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while(*(arr + i))
-		i++;
-	return(i);
-}
 
 char	**make_env_arr(char **src, int len_src)
 {
@@ -84,13 +74,9 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	shell.env_arr = NULL;
-	shell.env_count = count_len_arr(envp);
-	shell.env_arr = make_env_arr(envp, shell.env_count); //не используется
 	shell.envp = malloc(sizeof(t_envp *));
 	if (!shell.envp)
 		ft_error(ERR_ALLOC);
-	shell.start = shell.envp;
 	envp_init(&shell, envp);
 
 	// распечатать переменные окружения и сравнить с оригиналом
@@ -115,6 +101,7 @@ int	main(int argc, char **argv, char **envp)
 	// 	printf("%s=%s\n", list->key, list->value);
 	// 	list = list->next;
 	// }
+
 	// clear_all(&shell);
 	return (0);
 }
