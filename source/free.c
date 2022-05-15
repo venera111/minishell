@@ -6,13 +6,13 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 19:43:54 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:01:23 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	free_builtins(t_cmd *node)
+static void	free_builtins(t_cmd *node)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ void	free_builtins(t_cmd *node)
 	free(node->cmnds);
 }
 
-void	free_env(t_envp *envp)
+static void	free_env(t_envp *envp)
 {
 	t_envp	*tmp;
 
@@ -44,6 +44,5 @@ void	free_env(t_envp *envp)
 void	clear_all(t_shell *shell)
 {
 	free_env(shell->envp);
-	free(shell->start);
 	free_builtins(&shell->node);
 }

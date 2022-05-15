@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 19:39:24 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:02:00 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,6 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	shell.envp = malloc(sizeof(t_envp *));
-	if (!shell.envp)
-		ft_error(ERR_ALLOC);
 	envp_init(&shell, envp);
 
 	// распечатать переменные окружения и сравнить с оригиналом
