@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 16:10:28 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 19:34:04 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:38:38 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	envp_init(t_shell *shell, char **envp)
 	t_envp	*env;
 	t_envp	*new;
 
-	shell->env_count = count_len_arr(envp);
-	shell->start = shell->envp;
 	env = malloc(sizeof(t_envp));
 	if (!env)
 		ft_error(ERR_ALLOC);
+	shell->env_count = count_len_arr(envp);
+	shell->start = shell->envp;
 	fill_envp(envp[0], env);
 	env->next = NULL;
 	env->prev = NULL;

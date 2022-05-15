@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 19:33:37 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:39:24 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ int	main(int argc, char **argv, char **envp)
 	// 	list = list->next;
 	// }
 
-	// clear_all(&shell);
+	clear_all(&shell);
 	return (0);
 }

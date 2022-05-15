@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 19:29:42 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:36:29 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct	s_envp
 */
 typedef struct s_shell
 {
-	char			**env_arr; //переменные окружения
 	char			*tmp_cwd;
 	int				env_count;
 	char			arr[MAXPATHLEN];
