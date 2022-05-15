@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:09:35 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 20:22:16 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:50:51 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ void	cd_continue(t_shell *shell)
 		tmp->value = shell->tmp_cwd;
 		free(path);
 	}
-	// printf("old: %s\n", tmp->value);
 	getcwd(shell->arr, sizeof(shell->arr));
 	tmp = shell->envp;
 	tmp = find_node("PWD", tmp);
 	free(tmp->value);
 	tmp->value = ft_strdup(shell->arr);
-	// printf("curr: %s\n", tmp->value);
 }
 
 void	cd(t_shell *shell)

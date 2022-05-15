@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 19:40:05 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:12:19 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ int	main(int argc, char **argv, char **envp)
 	shell.envp = malloc(sizeof(t_envp *));
 	if (!shell.envp)
 		ft_error(ERR_ALLOC);
-	shell.tmp = shell.envp;
+	shell.start = shell.envp;
 	envp_init(&shell, envp);
 
-	//распечатать переменные окружения и сравнить с оригиналом
+	// распечатать переменные окружения и сравнить с оригиналом
 	// t_envp *tmp = shell.envp;
 	// while (tmp)
 	// {
@@ -104,7 +104,17 @@ int	main(int argc, char **argv, char **envp)
 	// 	tmp = tmp->next;
 	// 	envp++;
 	// }
+
 	builtins(&shell, argc, argv);
-	clear_all(&shell);
+
+	//распечать переменные окружения после export
+	// t_envp *list;
+	// list = shell.envp;
+	// while (list)
+	// {
+	// 	printf("%s=%s\n", list->key, list->value);
+	// 	list = list->next;
+	// }
+	// clear_all(&shell);
 	return (0);
 }

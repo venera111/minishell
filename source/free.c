@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:48:57 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/13 20:30:24 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:01:37 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	clear_all(t_shell *shell)
 {
 	free_arr(shell->env_arr, shell->env_count);
 	free_env(shell->envp);
-	free(shell->tmp);
+	free(shell->start);
 	free_builtins(&shell->node);
 }
