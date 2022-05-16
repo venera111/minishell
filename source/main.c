@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:38:24 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 20:06:57 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/16 10:20:37 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	envp_init(&shell, envp);
-	// shell_lvl(shell.envp);
+	shell_lvl(shell.envp);
 
 	// распечатать переменные окружения и сравнить с оригиналом
 	// t_envp *tmp = shell.envp;

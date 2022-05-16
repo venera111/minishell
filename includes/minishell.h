@@ -6,7 +6,7 @@
 /*   By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:52:06 by qestefan          #+#    #+#             */
-/*   Updated: 2022/05/15 20:06:47 by qestefan         ###   ########.fr       */
+/*   Updated: 2022/05/16 10:58:05 by qestefan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_shell
 void	envp_init(t_shell *shell, char **envp);
 char	**make_env_arr(char **src, int len_src);
 t_envp	*find_node(char *key, t_envp *envp);
+void	shell_lvl(t_envp *envp);
 
 /*
 ** builtins

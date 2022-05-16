@@ -6,7 +6,7 @@
 #    By: qestefan <qestefan@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/08 17:26:47 by qestefan          #+#    #+#              #
-#    Updated: 2022/05/15 19:33:40 by qestefan         ###   ########.fr        #
+#    Updated: 2022/05/16 11:11:41 by qestefan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ endif
 
 
 #source
-SRCS = $(DIR)main.c $(DIR)free.c $(DIR)error.c $(DIR)envp.c
+SRCS = $(DIR)main.c $(DIR)free.c $(DIR)error.c $(DIR)envp.c $(DIR)shell_lvl.c
 BUILT_SRC = $(BUILT)echo.c $(BUILT)cd.c $(BUILT)export.c
 # PARS_SRC = $(PARS)
 
